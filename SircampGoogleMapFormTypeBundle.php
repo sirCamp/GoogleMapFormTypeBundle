@@ -1,9 +1,9 @@
 <?php
 
-namespace Oh\GoogleMapFormTypeBundle;
+namespace Sircamp\GoogleMapFormTypeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class OhGoogleMapFormTypeBundle extends Bundle
+class SircampGoogleMapFormTypeBundle extends Bundle
 {
 }
