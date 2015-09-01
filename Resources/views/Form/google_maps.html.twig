@@ -1,17 +1,27 @@
 {% block sircamp_google_maps_widget %}
 <div {{ block('widget_container_attributes') }}>
-	{% block sircamp_google_maps_html %} 
-	<div id="{{ id }}_container">
-		<input type="text" id="{{ id }}_input" /><button id="{{ id }}_search_button" class="btn">Search</button><br /><a href="#" id="{{ id }}_current_position">Current location</a>
-		<div id="{{ id }}_map_canvas" class="gmap" style="width: {{ map_width }}px; height: {{ map_height }}px"></div>
-		<div id="{{ id }}_error"></div>
-	</div>
-	{% endblock %}
 	{% block sircamp_google_maps_fields %} 
-		{% for child in form %}
-		    {{ form_row(child) }}
-        {% endfor %}
+
+        {{form_row(form.street)}}
+        {{form_row(form.city)}}
+        {{form_row(form.postcode)}}
+        {% block sircamp_google_maps_html %} 
+        <div id="{{ id }}_container">
+        	<div style="margin-bottom:10px; display:none;" class="alert alert-danger alert-dismissible" role="alert" id="{{ id }}_error_alert" >
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  <strong>Danger!</strong> <span id="{{ id }}_error_aspan"></span>
+			</div>
+        	<div style="margin-bottom:10px;">
+        		<button id="{{ id }}_search_button" class="btn btn-default"><span class="fa fa-search" style="margin-right:5px;"></span>Search</button> <button  style="margin-left:10px"id="{{ id }}_current_position" class="btn btn-default"><span class="fa fa-globe" style="margin-right:5px;"></span>Current location</button>
+        	</div>
+        	<div id="{{ id }}_map_canvas" class="gmap" style="width: {{ map_width }}; height: {{ map_height }}" ></div>
+        	<div id="{{ id }}_error"></div>
+        </div>
+        {% endblock %}
+        {{form_row(form.lat)}}
+        {{form_row(form.lng)}}
 	{% endblock %}
+
 	{% block sircamp_google_maps_javascripts %}
 		{% if include_jquery %}
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
@@ -20,11 +30,19 @@
 		<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=true"></script>
 		{% endif %}
 		{% javascripts
-			'@sircampGoogleMapFormTypeBundle/Resources/public/js/jquery.sircampgooglemaps.js'
+			'@SircampGoogleMapFormTypeBundle/Resources/public/js/jquery.sircampgooglemaps.js'
 		%}
 		<script type="text/javascript" src="{{ asset_url }}"></script>
 		{% endjavascripts %}
 	{% endblock %}
+	
+	{% block sircamp_google_maps_stylesheets %}
+		{% stylesheets
+			'@SircampGoogleMapFormTypeBundle/Resources/public/css/fontawesome/css/font-awesome.css'
+		%}
+		{% endstylesheets %}
+	{% endblock %}	
+	
 	{% block sircamp_google_maps_javascript %}
 		{% block sircamp_google_maps_callback %}
 			<script type="text/javascript">
@@ -46,6 +64,11 @@
 				  'default_zoom'       : {% if value is defined and value and value.lat and value.lng %}15{% else %}5{% endif %},
 				  'lat_field'          : $('#{{ attribute(form, lat_name).vars.id }}'),
 				  'lng_field'          : $('#{{ attribute(form, lng_name).vars.id }}'),
+				  'street_field'       : $('#{{ attribute(form, street_name).vars.id }}'),
+				  'city_field'         : $('#{{ attribute(form, city_name).vars.id }}'),
+				  'postcode_field'     : $('#{{ attribute(form, postcode_name).vars.id }}'),
+				  'error_alert'		   : $('#{{ id }}_error_alert'),
+				  'error_span'		   : $('#{{ id }}_error_span'),
 				  'callback'           : sircamp_google_maps_callback
 				});
 			});
