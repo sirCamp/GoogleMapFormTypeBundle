@@ -1,0 +1,12 @@
+{
+    "name": "sircamp/google-map-form-type-builder",
+    "description": "A form buoilder for google maps and symfony",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sirCamp",
+            "email": "sircampydevelop@gmail.com"
+        }
+    ],
+    "require": {}
+}
