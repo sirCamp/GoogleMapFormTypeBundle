@@ -1,6 +1,6 @@
 <?php
 
-namespace Oh\GoogleMapFormTypeBundle\Form\Type;
+namespace Sircamp\GoogleMapFormTypeBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
@@ -68,6 +68,6 @@ class GoogleMapType extends AbstractType
 
     public function getName()
     {
-        return 'oh_google_maps';
+        return 'Sircamp_google_maps';
     }
 }

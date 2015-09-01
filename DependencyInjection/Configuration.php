@@ -1,6 +1,6 @@
 <?php
 
-namespace Oh\GoogleMapFormTypeBundle\DependencyInjection;
+namespace Sircamp\GoogleMapFormTypeBundle\DependencyInjection;
 
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         
-        $rootNode = $treeBuilder->root('oh_google_map_form_type');
+        $rootNode = $treeBuilder->root('sircamp_google_map_form_type');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for

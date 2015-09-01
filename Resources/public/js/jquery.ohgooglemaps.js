@@ -132,9 +132,9 @@
 
 	}
 
-	$.fn.ohGoogleMapType = function(settings) {
+	$.fn.SircampGoogleMapType = function(settings) {
 
-		settings = $.extend({}, $.fn.ohGoogleMapType.defaultSettings, settings || {});
+		settings = $.extend({}, $.fn.SircampGoogleMapType.defaultSettings, settings || {});
 
 		return this.each(function() {
 			var map_el = $(this);
@@ -147,7 +147,7 @@
 
 	};
 	
-	$.fn.ohGoogleMapType.defaultSettings = {
+	$.fn.SircampGoogleMapType.defaultSettings = {
 			  'search_input_el'    : null,
 			  'search_action_el'   : null,
 			  'search_error_el'    : null,
